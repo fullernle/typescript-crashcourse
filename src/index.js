@@ -63,3 +63,42 @@ var userObject = {
 var cid = 1;
 var customerId = cid; // Method 1: customerId is now type number.
 var customerId2 = cid; // Method 2
+// Functions
+//each arguments type then return value type
+function addNum(x, y) {
+    return x + y;
+}
+// If you don't have a return value, you can use a void type.
+function log(message) {
+    console.log(message);
+}
+var userInt = {
+    id: 1,
+    name: "John"
+};
+var p1 = 1;
+var add = function (x, y) { return x + y; }; // Since we're using the MathFunc interface, this function will expect two number inputs and a returned number value as well.
+var sub = function (x, y) { return x - y; }; // This is also using the interface, but we're able to change what the function does while keeping the same type parameters for input and output
+// Classes
+var Person = /** @class */ (function () {
+    function Person(id, name) {
+        this.id = id;
+        this.name = name;
+    }
+    Person.prototype.register = function () {
+        return "".concat(this.name, " is now registered");
+    };
+    return Person;
+}());
+var fuller = new Person(1, "Fuller");
+var brad = new Person(2, "Brad");
+var PersonInt = /** @class */ (function () {
+    function PersonInt(id, name) {
+        this.id = id;
+        this.name = name;
+    }
+    PersonInt.prototype.register = function () {
+        return "".concat(this.name, " is now registered");
+    };
+    return PersonInt;
+}());

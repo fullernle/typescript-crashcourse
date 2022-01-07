@@ -84,5 +84,81 @@ const userObject: User = {
 // Type Assertion
 // Tells the compiler that we'll treat the entity as a different type.
 let cid: any = 1;
-let customerId = <number>cid // Method 1: customerId is now type number.
-let customerId2 = cid as number // Method 2
+let customerId = <number>cid; // Method 1: customerId is now type number.
+let customerId2 = cid as number; // Method 2
+
+// Functions
+//each arguments type then return value type
+function addNum(x: number, y: number): number {
+  return x + y;
+}
+
+// If you don't have a return value, you can use a void type.
+function log(message: string | number): void {
+  console.log(message);
+}
+
+// Interfaces
+// "Kind of like a custom type, or specific structure to an object or function"
+interface UserInterface {
+  readonly id: number; // Makes id read only, so you can't reassign the value
+  name: string;
+  age?: number; // Makes age optional so it doesn't error if an age isn't included
+}
+
+const userInt: UserInterface = {
+  id: 1,
+  name: "John",
+};
+
+// When using objects, interface may be preferred, but types can be used with Unions or Primitives
+type Point = number | string;
+const p1: Point = 1;
+
+interface MathFunc {
+  (x: number, y: number): number;
+}
+
+const add: MathFunc = (x, y) => x + y; // Since we're using the MathFunc interface, this function will expect two number inputs and a returned number value as well.
+const sub: MathFunc = (x: number, y: number): number => x - y; // This is also using the interface, but we're able to change what the function does while keeping the same type parameters for input and output
+
+// Classes
+class Person {
+  // By default, variables are public. Can instantiate as private or protected as well. Private being nothing can access, but its own class instance. Protected makes it so they're accessible between extended classes.
+  id: number;
+  name: string;
+
+  constructor(id: number, name: string) {
+    this.id = id;
+    this.name = name;
+  }
+
+  register() {
+    return `${this.name} is now registered`;
+  }
+}
+
+const fuller = new Person(1, "Fuller");
+const brad = new Person(2, "Brad");
+
+// Class + Interface
+// Allows you to essentially map out what your class is supposed to look like.
+interface PersonInterface {
+  id: number;
+  name: string;
+  register(): string;
+}
+
+class PersonInt implements PersonInterface {
+  id: number;
+  name: string;
+
+  constructor(id: number, name: string) {
+    this.id = id;
+    this.name = name;
+  }
+
+  register() {
+    return `${this.name} is now registered`;
+  }
+}

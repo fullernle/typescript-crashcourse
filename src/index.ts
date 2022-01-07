@@ -162,3 +162,37 @@ class PersonInt implements PersonInterface {
     return `${this.name} is now registered`;
   }
 }
+
+// Extending Classes
+class Employee extends Person {
+  position: string;
+
+  constructor(id: number, name: string, position: string) {
+    super(id, name);
+    this.position = position;
+  }
+}
+
+const emp = new Employee(3, "James", "Developer");
+// So emp has access to .register(), .id, .name
+// So employee is a sub class of PersonInterface
+
+// Generics
+function getArray(items: any[]): any[] {
+  return new Array().concat(items);
+}
+
+// Let's say we want one to an array of numbers and one to be an array of strings, and we only want to use the above function to create them.
+let numArray = getArray([1, 2, 3, 4]);
+let strArray = getArray(["fuller", "brad", "jill"]);
+
+numArray.push('hello'); // valid code because getArray takes in and returns the 'any' type
+// We can add a generic to this so that the num or str Array have to constrain to those types.
+
+function getArrayGeneric<T>(items: T[]): T[] {
+	return new Array().concat(items)
+}
+
+let numArrayGeneric = getArrayGeneric<number>([1, 2, 3, 4]);
+let strArrayGeneric = getArrayGeneric<string>(["brad", "fuller", "jill"])
+// Allows us to create reusable components that we can replace with whatever type we want.

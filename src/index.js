@@ -1,6 +1,21 @@
 // Watch the file using tsc --watch index
 // tsc --init will create config file
 // Running tsc without a file afterwards will just compile any typescript file in the project
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // let id = 5; // standard js, but typescript with implicitly set it as a Number
 // let id: number = 5; // TypeScript explicit declaration of number type.
 // Basic Types
@@ -102,3 +117,31 @@ var PersonInt = /** @class */ (function () {
     };
     return PersonInt;
 }());
+// Extending Classes
+var Employee = /** @class */ (function (_super) {
+    __extends(Employee, _super);
+    function Employee(id, name, position) {
+        var _this = _super.call(this, id, name) || this;
+        _this.position = position;
+        return _this;
+    }
+    return Employee;
+}(Person));
+var emp = new Employee(3, "James", "Developer");
+// So emp has access to .register(), .id, .name
+// So employee is a sub class of PersonInterface
+// Generics
+function getArray(items) {
+    return new Array().concat(items);
+}
+// Let's say we want one to an array of numbers and one to be an array of strings, and we only want to use the above function to create them.
+var numArray = getArray([1, 2, 3, 4]);
+var strArray = getArray(["fuller", "brad", "jill"]);
+numArray.push('hello'); // valid code because getArray takes in and returns the 'any' type
+// We can add a generic to this so that the num or str Array have to constrain to those types.
+function getArrayGeneric(items) {
+    return new Array().concat(items);
+}
+var numArrayGeneric = getArrayGeneric([1, 2, 3, 4]);
+var strArrayGeneric = getArrayGeneric(["brad", "fuller", "jill"]);
+// Allows us to create reusable components that we can replace with whatever type we want.

@@ -145,3 +145,6 @@ function getArrayGeneric(items) {
 var numArrayGeneric = getArrayGeneric([1, 2, 3, 4]);
 var strArrayGeneric = getArrayGeneric(["brad", "fuller", "jill"]);
 // Allows us to create reusable components that we can replace with whatever type we want.
+// Using typescript with React
+// Run the command: npx create-react-app . --template typescript
+// This will create the react project with typescript enabled, so now any .js or .jsx files are converted to .ts and .tsx code. 

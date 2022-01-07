@@ -30,7 +30,59 @@ let person: [number, string, boolean] = [1, "Fuller", true]; //Tuple allows us t
 let employee: [number, string][]; // To work around the above limitation, you can add the empty brackets to declare an Array of Tuples.
 
 employee = [
-	[1, "Fuller"],
-	[2, "Sennacy"],
-	[3, "Alvin"],
-]
+  [1, "Fuller"],
+  [2, "Sennacy"],
+  [3, "Alvin"],
+];
+
+// Union
+// If you want a variable to hold more than 1 type, use Union
+let pid: string | number | number[] = 22;
+
+//These don't error since Unions allows variables to be multi typed.
+pid = "22";
+pid = [1, 2, 3];
+
+// Enum
+// Allows us to define a set of named constants, numeric or string
+enum Direction1 {
+  Up,
+  Down,
+  Left,
+  Right,
+}
+// By default, it will automatically assign incremental numeric values starting from 0. If we decide to set Up=1, it'll change everything to increment from 1, resulting in Down = 2, Left = 3, Right = 4
+
+enum Direction2 {
+  Up = "Up",
+  Down = "Down",
+  Left = "Left",
+  Right = "Right",
+}
+// Can also use strings as values.
+
+// Objects
+const user: {
+  id: number;
+  name: string;
+} = {
+  id: 1,
+  name: "John",
+};
+
+// Alternative, cleaner version, to the above
+type User = {
+  id: number;
+  name: string;
+};
+
+const userObject: User = {
+  id: 1,
+  name: "Fuller",
+};
+
+// Type Assertion
+// Tells the compiler that we'll treat the entity as a different type.
+let cid: any = 1;
+let customerId = <number>cid // Method 1: customerId is now type number.
+let customerId2 = cid as number // Method 2

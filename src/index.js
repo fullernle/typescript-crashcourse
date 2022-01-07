@@ -25,3 +25,41 @@ employee = [
     [2, "Sennacy"],
     [3, "Alvin"],
 ];
+// Union
+// If you want a variable to hold more than 1 type, use Union
+var pid = 22;
+//These don't error since Unions allows variables to be multi typed.
+pid = "22";
+pid = [1, 2, 3];
+// Enum
+// Allows us to define a set of named constants, numeric or string
+var Direction1;
+(function (Direction1) {
+    Direction1[Direction1["Up"] = 0] = "Up";
+    Direction1[Direction1["Down"] = 1] = "Down";
+    Direction1[Direction1["Left"] = 2] = "Left";
+    Direction1[Direction1["Right"] = 3] = "Right";
+})(Direction1 || (Direction1 = {}));
+// By default, it will automatically assign incremental numeric values starting from 0. If we decide to set Up=1, it'll change everything to increment from 1, resulting in Down = 2, Left = 3, Right = 4
+var Direction2;
+(function (Direction2) {
+    Direction2["Up"] = "Up";
+    Direction2["Down"] = "Down";
+    Direction2["Left"] = "Left";
+    Direction2["Right"] = "Right";
+})(Direction2 || (Direction2 = {}));
+// Can also use strings as values.
+// Objects
+var user = {
+    id: 1,
+    name: "John"
+};
+var userObject = {
+    id: 1,
+    name: "Fuller"
+};
+// Type Assertion
+// Tells the compiler that we'll treat the entity as a different type.
+var cid = 1;
+var customerId = cid; // Method 1: customerId is now type number.
+var customerId2 = cid; // Method 2
